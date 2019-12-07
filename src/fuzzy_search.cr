@@ -1,6 +1,3 @@
-# TODO: Write documentation for `FuzzySearch`
+require "./fuzzy_search/*"
 module FuzzySearch
-  VERSION = "0.1.0"
-
-  # TODO: Put your code here
 end
