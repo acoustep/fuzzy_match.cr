@@ -27,8 +27,17 @@ FuzzyMatch::Simple.new("mvc", "ModelViewController").matches? # true
 FuzzyMatch::Simple.new("xyz", "ModelViewController").matches? # false
 
 # Full
+
 FuzzyMatch::Full.new("view", "ModelViewController").matches? # true
 FuzzyMatch::Full.new("view", "ModelViewController").score # 60
+
+# Convenience method for searching multiple at a time
+
+results = FuzzyMatch.search("view", ["ModelViewController", "SearchViewController", ".gitignore"])
+results.size # 2
+results[0].str # ModelViewController
+results[0].score # 60
+results[0].matches? # true
 ```
 
 The `Simple` struct provides a simple yes/no check on whether a pattern matches a string. The `Full` struct provides a score which can then be sorted.
@@ -44,7 +53,6 @@ The `Simple` struct provides a simple yes/no check on whether a pattern matches 
 
 ## To do
 
-* Convenience wrapper for searching multiple files (with process spawning)
 * Benchmarks
 * Web demo
 
