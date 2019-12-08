@@ -15,6 +15,7 @@ module FuzzyMatch
 		property last_match_index : Int32 = 0 # we use this to prevent finding matches behind the previous match (Always match forward)
 		property has_matched = false
 		property matches_all_letters = true
+		property str : String
 
 		def initialize(@pattern : String, @str : String)
 			search

@@ -38,6 +38,20 @@ describe FuzzyMatch::Full do
 		lower_match = FuzzyMatch::Full.new("view", "modelviewcontroller")
 		camel_match.score.should be > lower_match.score
   end
+
+	it "should be able to sort scores" do
+		rankings = [
+			FuzzyMatch::Full.new("view", "ModelViewController"),
+			FuzzyMatch::Full.new("view", "SearchViewController"),
+			FuzzyMatch::Full.new("view", ".gitignore"),
+		]
+			.select { |q| q.matches? }
+			.sort(&.score)
+
+		rankings.size.should eq(2)
+		rankings[0].str.should eq("ModelViewController")
+		rankings[1].str.should eq("SearchViewController")
+	end
 end
 
 
