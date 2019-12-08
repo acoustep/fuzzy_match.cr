@@ -1,8 +1,8 @@
 # Fuzzy Match
 
-Fuzzy Matching inspired by [this blog post](https://www.forrestthewoods.com/blog/reverse_engineering_sublime_texts_fuzzy_match/).
+Fuzzy Matching inspired by [this blog post](https://www.forrestthewoods.com/blog/reverse_engineering_sublime_texts_fuzzy_match/) for Crystal.
 
-Fuzzy Match provides search functionality similar to that of code editors such as Sublime Text 2 for searching files.
+Fuzzy Match provides search functionality similar to code editors such as Sublime Text 2 file searching.
 
 ## Installation
 
@@ -18,6 +18,12 @@ Fuzzy Match provides search functionality similar to that of code editors such a
 
 ## Usage
 
+The `Simple` struct provides a simple yes/no check on whether a pattern matches a string.
+
+The `Full` struct provides a score which can then be sorted.
+
+For most use cases, you'll want to pass a pattern and a list of file paths. For this you can use `FuzzyMatch.search`.
+
 ```crystal
 require "fuzzy_match"
 
@@ -31,6 +37,13 @@ FuzzyMatch::Simple.new("xyz", "ModelViewController").matches? # false
 FuzzyMatch::Full.new("view", "ModelViewController").matches? # true
 FuzzyMatch::Full.new("view", "ModelViewController").score # 60
 
+[
+	FuzzyMatch::Full.new("view", "ModelViewController"),
+	FuzzyMatch::Full.new("view", "SearchViewController"),
+	FuzzyMatch::Full.new("view", ".gitignore"),
+].select { |q| q.matches? }
+.sort(&.score)
+
 # Convenience method for searching multiple at a time
 
 results = FuzzyMatch.search("view", ["ModelViewController", "SearchViewController", ".gitignore"])
@@ -39,17 +52,6 @@ results[0].str # ModelViewController
 results[0].score # 60
 results[0].matches? # true
 ```
-
-The `Simple` struct provides a simple yes/no check on whether a pattern matches a string. The `Full` struct provides a score which can then be sorted.
-
-```crystal
-[
-	FuzzyMatch::Full.new("view", "ModelViewController"),
-	FuzzyMatch::Full.new("view", "SearchViewController"),
-	FuzzyMatch::Full.new("view", ".gitignore"),
-].select { |q| q.matches? }
-.sort(&.score)
-````
 
 ## To do
 
