@@ -56,6 +56,7 @@ results[0].matches? # true
 ## To do
 
 * Benchmarks
+* Property for listing matched indexes - useful for highlighting.
 * Web demo
 
 ## Development
