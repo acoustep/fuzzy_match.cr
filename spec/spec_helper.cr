@@ -1,2 +1,2 @@
 require "spec"
-require "../src/fuzzy_search"
+require "../src/fuzzy_match"

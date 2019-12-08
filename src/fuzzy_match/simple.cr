@@ -1,5 +1,5 @@
-module FuzzySearch
-	class Simple
+module FuzzyMatch
+	struct Simple
 		property pattern_idx = 0
 		property str_idx = 0
 		property pattern_length : Int32

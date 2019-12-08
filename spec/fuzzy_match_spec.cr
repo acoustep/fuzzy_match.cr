@@ -1,4 +1,4 @@
 require "./spec_helper"
 
-describe FuzzySearch do
+describe FuzzyMatch do
 end
