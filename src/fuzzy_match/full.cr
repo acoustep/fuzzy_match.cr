@@ -37,6 +37,11 @@ module FuzzyMatch
 							@score += SEQUENTIAL_BONUS
 						end
 					end
+					# find separators and the characters after them
+					if current_match_index > 0 && SEPARATORS.includes?(@str[current_match_index - 1])
+						@score += SEPARATOR_BONUS
+						puts "separator bonus"
+					end
 					# find the index of the _next_ matching character
 					@last_match_index = @last_match_index + current_match_index
 					@has_matched = true
@@ -51,10 +56,6 @@ module FuzzyMatch
 					@score += CAMEL_BONUS
 				end
 
-				# find separators and the characters after them
-				if separator_chars.includes?(char) || separator_chars.includes?(char.upcase)
-					@score += SEPARATOR_BONUS
-				end
 			end
 
 			# position of first match

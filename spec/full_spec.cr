@@ -52,6 +52,14 @@ describe FuzzyMatch::Full do
 		rankings[0].str.should eq("ModelViewController")
 		rankings[1].str.should eq("SearchViewController")
 	end
+
+	it "should provide a bonus for matching after a separator" do
+		# -15 for missing first 5 chars
+		# +30 for match after separator
+		query = FuzzyMatch::Full.new("v", "model_view_controller")
+		query.score.should eq(15)
+		query.matches?.should eq(true)
+	end
 end
 
 

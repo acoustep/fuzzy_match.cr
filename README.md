@@ -42,6 +42,12 @@ The `Simple` struct provides a simple yes/no check on whether a pattern matches 
 .sort(&.score)
 ````
 
+## To do
+
+* Convenience wrapper for searching multiple files (with process spawning)
+* Benchmarks
+* Web demo
+
 ## Development
 
 TODO: Write development instructions here
