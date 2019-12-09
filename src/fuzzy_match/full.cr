@@ -41,7 +41,6 @@ module FuzzyMatch
           # find separators and the characters after them
           if current_match_index > 0 && SEPARATORS.includes?(@str[current_match_index - 1])
             @score += SEPARATOR_BONUS
-            puts "separator bonus"
           end
           # find the index of the _next_ matching character
           @last_match_index = @last_match_index + current_match_index

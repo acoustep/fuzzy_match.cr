@@ -7,6 +7,6 @@ module FuzzyMatch
     return strings
       .map { |str| FuzzyMatch::Full.new(pattern, str) }
       .select { |q| q.matches? }
-      .sort(&.score)
+			.sort { |a, b| b.score <=> a.score }
   end
 end

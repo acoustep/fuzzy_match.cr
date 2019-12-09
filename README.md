@@ -55,13 +55,21 @@ results[0].matches? # true
 
 ## To do
 
-* Benchmarks
 * Property for listing matched indexes - useful for highlighting.
 * Web demo
 
 ## Development
 
-TODO: Write development instructions here
+### Running benchmarks
+
+To test speed build `benchmark.cr` and run. This runs through a list of roughly 3000 files.
+
+```crystal
+crystal build --release --no-debug src/benchmark.cr
+./benchmark
+```
+
+At the time of writing, the following results were found on a 3.1Ghz i5 MBP (Results in seconds)
 
 ## Contributing
 
