@@ -60,4 +60,5 @@ describe FuzzyMatch::Full do
     query.score.should eq(15)
     query.matches?.should eq(true)
   end
+
 end

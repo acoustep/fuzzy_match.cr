@@ -19,6 +19,7 @@ module FuzzyMatch
     property str : String
 
     def initialize(@pattern : String, @str : String)
+			return if @pattern.empty?
       search
     end
 
