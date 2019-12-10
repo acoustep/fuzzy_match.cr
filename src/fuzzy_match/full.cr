@@ -10,13 +10,14 @@ module FuzzyMatch
     MAX_LEADING_LETTER_PENALTY = -15 # maximum penalty for leading letters
     UNMATCHED_LETTER_PENALTY   =  -1
 
-    SEPARATORS = ['_', ' ', '/', '|']
+    SEPARATORS = ['_', ' ', '-']
 
     property score = 0
     property last_match_index : Int32 = 0 # we use this to prevent finding matches behind the previous match (Always match forward)
     property has_matched = false
     property matches_all_letters = true
     property str : String
+		property matched_indexes = [] of Int32
 
     def initialize(@pattern : String, @str : String)
 			return if @pattern.empty?
