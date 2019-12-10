@@ -86,8 +86,6 @@ crystal build --release --no-debug src/benchmark.cr
 ./benchmark
 ```
 
-At the time of writing, the following results were found on a 3.1Ghz i5 MBP (Results in seconds)
-
 ## Contributing
 
 1. Fork it (<https://github.com/acoustep/fuzzy_match/fork>)
