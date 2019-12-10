@@ -38,11 +38,12 @@ FuzzyMatch::Full.new("view", "ModelViewController").matches? # true
 FuzzyMatch::Full.new("view", "ModelViewController").score # 60
 
 [
-	FuzzyMatch::Full.new("view", "ModelViewController"),
-	FuzzyMatch::Full.new("view", "SearchViewController"),
-	FuzzyMatch::Full.new("view", ".gitignore"),
-].select { |q| q.matches? }
-.sort(&.score)
+  FuzzyMatch::Full.new("view", "ModelViewController"),
+  FuzzyMatch::Full.new("view", "SearchViewController"),
+  FuzzyMatch::Full.new("view", ".gitignore"),
+]
+  .select { |q| q.matches? }
+  .sort(&.score)
 
 # Convenience method for searching multiple at a time
 
@@ -51,6 +52,7 @@ results.size # 2
 results[0].str # ModelViewController
 results[0].score # 60
 results[0].matches? # true
+```
 
 
 ### Accessing the matched characters
