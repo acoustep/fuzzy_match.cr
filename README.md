@@ -1,5 +1,7 @@
 # Fuzzy Match
 
+<img src="https://travis-ci.org/acoustep/fuzzy_match.cr.svg?branch=master" alt="build:">
+
 Fuzzy Matching inspired by [this blog post](https://www.forrestthewoods.com/blog/reverse_engineering_sublime_texts_fuzzy_match/) for Crystal.
 
 Fuzzy Match provides search functionality similar to code editors such as Sublime Text 2 file searching.
