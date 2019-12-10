@@ -17,10 +17,10 @@ module FuzzyMatch
     property has_matched = false
     property matches_all_letters = true
     property str : String
-		property matched_indexes = [] of Int32
+    property matched_indexes = [] of Int32
 
     def initialize(@pattern : String, @str : String)
-			return if @pattern.empty?
+      return if @pattern.empty?
       search
     end
 
@@ -35,6 +35,7 @@ module FuzzyMatch
         # If theres no match then add the penalty
         # if there is check if theres a sequential bonus from a previous match
         if current_match_index = @str[@last_match_index..-1].downcase.chars.index(char.downcase)
+          @matched_indexes << last_match_index + current_match_index
           if @has_matched
             if (@str.size > @last_match_index) && (@last_match_index + current_match_index) == (@last_match_index + 1)
               @score += SEQUENTIAL_BONUS

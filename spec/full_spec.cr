@@ -61,4 +61,26 @@ describe FuzzyMatch::Full do
     query.matches?.should eq(true)
   end
 
+  it "should be able to access the matched letter indexes" do
+    query = FuzzyMatch::Full.new("mvc", "ModelViewController")
+    query.matched_indexes.should eq([0, 5, 9])
+    str = String::Builder.build do |builder|
+      query.matched_indexes.each do |i|
+        builder << query.str[i]
+      end
+    end
+    str.should eq("MVC")
+  end
+
+  it "should be able to format with HTML" do
+    query = FuzzyMatch::Full.new("mvc", "ModelViewController")
+    str = String::Builder.build do |builder|
+      query.str.chars.each_with_index do |char, index|
+        builder << "<span class='underline'>" if query.matched_indexes.includes?(index)
+        builder << query.str[index]
+        builder << "</span>" if query.matched_indexes.includes?(index)
+      end
+    end
+    str.should eq("<span class='underline'>M</span>odel<span class='underline'>V</span>iew<span class='underline'>C</span>ontroller")
+  end
 end

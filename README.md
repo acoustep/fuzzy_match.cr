@@ -51,11 +51,26 @@ results.size # 2
 results[0].str # ModelViewController
 results[0].score # 60
 results[0].matches? # true
+
+
+### Accessing the matched characters
+
+Sometimes you want to be able to access matched letters. For example, you may wish to underline them with HTML.
+
+```crystal
+query = FuzzyMatch::Full.new("mvc", "ModelViewController")
+str = String::Builder.build do |builder|
+	query.str.chars.each_with_index do |char, index|
+		builder << "<span class='underline'>" if query.matched_indexes.includes?(index)
+		builder << query.str[index]
+		builder << "</span>" if query.matched_indexes.includes?(index)
+	end
+end
+p str # <span class='underline'>M</span>odel<span class='underline'>V</span>iew<span class='underline'>C</span>ontroller
 ```
 
 ## To do
 
-* Property for listing matched indexes - useful for highlighting.
 * Web demo
 
 ## Development
