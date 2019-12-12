@@ -10,12 +10,12 @@ Fuzzy Match provides search functionality similar to code editors such as Sublim
 
 1. Add the dependency to your `shard.yml`:
 
-   ```yaml
-   dependencies:
-     fuzzy_match:
-       github: acoustep/fuzzy_match
-			 version: ~> 0.2.0
-   ```
+```yaml
+dependencies:
+  fuzzy_match:
+    github: acoustep/fuzzy_match
+    version: ~> 0.2.0
+```
 
 2. Run `shards install`
 
