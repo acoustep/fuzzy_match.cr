@@ -13,7 +13,7 @@ Fuzzy Match provides search functionality similar to code editors such as Sublim
 ```yaml
 dependencies:
   fuzzy_match:
-    github: acoustep/fuzzy_match
+    github: acoustep/fuzzy_match.cr
     version: ~> 0.2.0
 ```
 
