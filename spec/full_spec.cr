@@ -83,4 +83,10 @@ describe FuzzyMatch::Full do
     end
     str.should eq("<span class='underline'>M</span>odel<span class='underline'>V</span>iew<span class='underline'>C</span>ontroller")
   end
+
+  it "should not get a camel bonus if previous letter is uppercase" do
+    non_bonus = FuzzyMatch::Full.new("v", "MView")
+    bonus = FuzzyMatch::Full.new("v", "mView")
+    bonus.score.should eq(non_bonus.score + 30)
+  end
 end

@@ -16,7 +16,8 @@ module FuzzyMatch
     property last_match_index : Int32 = 0 # we use this to prevent finding matches behind the previous match (Always match forward)
     property has_matched = false
     property matches_all_letters = true
-    property str : String
+    property str : String     # The string to match against
+    property pattern : String # The string to search for
     property matched_indexes = [] of Int32
 
     def initialize(@pattern : String, @str : String)
@@ -55,7 +56,7 @@ module FuzzyMatch
         end
 
         # If character matches an uppercase character add the bonus
-        if @str[@last_match_index..-1].includes?(char.upcase)
+        if is_camelcase_letter(index, char)
           @score += CAMEL_BONUS
         end
       end
@@ -67,6 +68,29 @@ module FuzzyMatch
       end
       if position_after_first_match_penalty != 0
         @score += position_after_first_match_penalty
+      end
+    end
+
+    def is_camelcase_letter(current_index, char)
+      unless @str[@last_match_index..-1].includes?(char.upcase)
+        return false
+      end
+
+      # if its the first letter and it's a capital return true
+      if current_index == 0 && @str[current_index] == char.upcase
+        return true
+      end
+
+      previous_char_index = @str[@last_match_index..-1].index(char.upcase).not_nil! - 1 + @last_match_index
+
+      unless previous_char_index >= 0 && @str.size >= previous_char_index
+        return false
+      end
+
+      if @str[previous_char_index] == @str[previous_char_index].downcase
+        true
+      else
+        false
       end
     end
 
