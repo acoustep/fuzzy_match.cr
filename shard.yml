@@ -1,7 +1,7 @@
 name: fuzzy_match
 description: |
   Fuzzy Match provides search functionality similar to Sublime Text 2 file searching.
-version: 0.2.0
+version: 0.3.0
 
 authors:
   - Mitch Stanley <acoustep@users.noreply.github.com>
