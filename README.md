@@ -14,7 +14,7 @@ Fuzzy Match provides search functionality similar to code editors such as Sublim
 dependencies:
   fuzzy_match:
     github: acoustep/fuzzy_match.cr
-    version: ~> 0.2.0
+    version: ~> 0.3.0
 ```
 
 2. Run `shards install`
